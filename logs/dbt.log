@@ -1,0 +1,71 @@
+[0m08:59:14.013844 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 08:59:14.026451 | ac73e8dc-3021-4625-94aa-2a0db27cc13e ==============================
+[0m08:59:14.026451 [info ] [MainThread]: Running with dbt=1.12.0-a1
+[0m08:59:14.026880 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'fail_fast': 'False', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'version_check': 'True', 'invocation_command': 'dbt init', 'partial_parse': 'True', 'introspect': 'True', 'quiet': 'False', 'profiles_dir': '/Users/owhondahraymond/.dbt', 'warn_error': 'None', 'use_colors': 'True', 'empty': 'None', 'log_path': 'logs', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'printer_width': '80', 'no_print': 'None', 'debug': 'False', 'log_format': 'default', 'write_json': 'True'}
+[0m08:59:54.855484 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/dbt/include/starter_project
+[0m08:59:54.862849 [info ] [MainThread]: 
+Your new dbt project "dbt_llyod" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m08:59:54.863400 [info ] [MainThread]: Setting up your profile.
+[0m09:16:50.844570 [info ] [MainThread]: Profile dbt_llyod written to /Users/owhondahraymond/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m09:16:50.877794 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 1056.8551, "process_in_blocks": "0", "process_kernel_time": 0.349495, "process_mem_max_rss": "366362624", "process_out_blocks": "0", "process_user_time": 1.21942}
+[0m09:16:50.878270 [debug] [MainThread]: Command `dbt init` succeeded at 09:16:50.878215 after 1056.86 seconds
+[0m09:16:50.878429 [debug] [MainThread]: Flushing usage events
+[0m09:18:03.072785 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 09:18:03.083531 | 76a35806-e231-4555-8a22-9f279ed388b7 ==============================
+[0m09:18:03.083531 [info ] [MainThread]: Running with dbt=1.12.0-a1
+[0m09:18:03.084010 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'profiles_dir': '/Users/owhondahraymond/.dbt', 'warn_error': 'None', 'quiet': 'False', 'static_parser': 'True', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt debug', 'log_path': 'logs', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'introspect': 'True', 'target_path': 'None', 'printer_width': '80', 'version_check': 'True', 'partial_parse': 'True'}
+[0m09:18:03.092134 [info ] [MainThread]: dbt version: 1.12.0-a1
+[0m09:18:03.092309 [info ] [MainThread]: python version: 3.13.5
+[0m09:18:03.092424 [info ] [MainThread]: python path: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+[0m09:18:03.092661 [info ] [MainThread]: os info: macOS-26.1-arm64-arm-64bit-Mach-O
+[0m09:18:03.094887 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m09:18:04.245814 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.snowflake'
+[0m09:18:04.246554 [info ] [MainThread]: Using profiles dir at /Users/owhondahraymond/.dbt
+[0m09:18:04.246686 [info ] [MainThread]: Using profiles.yml file at /Users/owhondahraymond/.dbt/profiles.yml
+[0m09:18:04.246801 [info ] [MainThread]: Using dbt_project.yml file at /Users/owhondahraymond/Desktop/interview_project/dbt/dbt_project.yml
+[0m09:18:04.246911 [info ] [MainThread]: Configuration:
+[0m09:18:04.247007 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m09:18:04.247102 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m09:18:04.247202 [info ] [MainThread]: Required dependencies:
+[0m09:18:04.247347 [debug] [MainThread]: Executing "git --help"
+[0m09:18:04.258690 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m09:18:04.259167 [debug] [MainThread]: STDERR: "b''"
+[0m09:18:04.259303 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m09:18:04.259439 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m09:18:04.259628 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m09:18:04.259732 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "dbt_hol", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+Runtime Error
+  Credentials in profile "jaffle_shop", target "dev" invalid: Runtime Error
+    Could not find adapter type snowflake!
+
+
+[0m09:18:04.259839 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/owhondahraymond/Desktop/interview_project/dbt/dbt_project.yml> not found
+
+[0m09:18:04.261638 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 1.2078127, "process_in_blocks": "0", "process_kernel_time": 0.24445, "process_mem_max_rss": "371523584", "process_out_blocks": "0", "process_user_time": 1.169798}
+[0m09:18:04.262133 [debug] [MainThread]: Command `dbt debug` failed at 09:18:04.262087 after 1.21 seconds
+[0m09:18:04.262345 [debug] [MainThread]: Flushing usage events
