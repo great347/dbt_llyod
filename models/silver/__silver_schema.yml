@@ -5,8 +5,20 @@ models:
     config:
       schema: silver 
       materialized: table
+    columns:
+      - name: customer_id
+        description: "The unique identifier for a customer"
+        tests:
+          - unique
+          - not_null
   
   - name: silver_api_transactions
     config:
       schema: silver 
       materialized: table
+    columns:
+      - name: transaction_id
+        description: "The unique identifier for transactions"
+        tests:
+          - unique
+          - not_null
