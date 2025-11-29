@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: bronze_sqlserver_customers
+    config:
+      schema: bronze 
+      materialized: table
+  
+  - name: bronze_api_transactions
+    config:
+      schema: bronze 
+      materialized: table

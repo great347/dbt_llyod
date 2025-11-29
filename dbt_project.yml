@@ -1,0 +1,24 @@
+name: 'dbt_llyod'
+version: '1.0.0'
+profile: 'dbt_llyod'
+
+
+
+models:
+  dbt_llyod:
+    +schema: 
+
+    # Bronze Stage Configuration
+    bronze:
+      +materialized: table
+
+    # Silver Stage Configuration
+    silver:
+      +materialized: table
+
+    # Gold Stage Configuration
+    gold:
+      +materialized: table
+
+     
+
