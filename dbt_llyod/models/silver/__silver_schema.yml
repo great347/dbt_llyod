@@ -1,9 +1,9 @@
 version: 2
 
 models:
-  - name: bronze_sqlserver_customers
+  - name: silver_sqlserver_customers
     config:
-      schema: bronze 
+      schema: silver 
       materialized: table
     columns:
       - name: customer_id
@@ -12,9 +12,9 @@ models:
           - unique
           - not_null
   
-  - name: bronze_api_transactions
+  - name: silver_api_transactions
     config:
-      schema: bronze 
+      schema: silver 
       materialized: table
     columns:
       - name: transaction_id
