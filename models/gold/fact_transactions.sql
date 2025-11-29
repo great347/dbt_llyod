@@ -6,16 +6,16 @@
 
 
 select
-    transaction_skey,
-    transaction_id,
-    ta.consumer_id,
-    transaction_type,
-    transaction_date,
-    transaction_update_date,
-    transaction_payment,
-    inserted_at
+    ta.transaction_skey,
+    ta.transaction_id,
+    ta.customer_id,
+    ta.transaction_type,
+    ta.transaction_date,
+    ta.transaction_update_date,
+    ta.transaction_payment,
+    ta.inserted_at
 
 from
-    {{ ref('silver_api_transactions')}} ta
-left join {{ ref('silver_sqlserver_customers')}} sc
-        ta.customer_id = sc.customer_id
+    {{ ref('silver_api_transactions') }} ta
+left join {{ ref('silver_sqlserver_customers') }} sc 
+        on ta.customer_id = sc.customer_id
