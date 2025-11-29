@@ -21,9 +21,9 @@ jobs:
           # Replace with your specific GCP project ID and Service Account Email
           project_id: "int-dev-001"
           #service_account: "llyod-wif@int-dev-001.iam.gserviceaccount.com"
-          #workload_identity_provider: "projects/226403353486/locations/global/workloadIdentityPools/github/providers/llyod-githu"
+          workload_identity_provider: "projects/226403353486/locations/global/workloadIdentityPools/github/providers/llyod-github"
         
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+          #credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
 
       # --- Optional: Install Python and dbt if you don't have a dedicated dbt action ---  
