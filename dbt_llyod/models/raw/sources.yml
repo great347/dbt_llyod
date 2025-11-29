@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw_database_source 
+    database: int-dev-001      
+    schema: raw_database       
+
+    tables:
+      - name: api_transaction_raw
+      - name: sqlserver_customer_raw
+     
