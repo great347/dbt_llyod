@@ -1,10 +1,11 @@
 {{- config(alias='silver_api_transaction'
 , materialized ='table'
-, unique_key='customer_id')
+, unique_key='transaction_skey')
 -}}
 
 
 select 
+    {{ dbt_utils.generate_surrogate_key(['transaction_id', 'inserted_at']) }} AS transaction_skey,
     transaction_id,
     consumer_id,
     transaction_type,
