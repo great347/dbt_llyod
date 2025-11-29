@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: silver_sqlserver_customers
+    config:
+      schema: silver 
+      materialized: table
+  
+  - name: silver_api_transactions
+    config:
+      schema: silver 
+      materialized: table
