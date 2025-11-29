@@ -1,0 +1,45 @@
+name: dbt BigQuery WIF Pipeline
+
+on:
+  pull_request:
+    types:
+    - opened
+    - reopened
+    - synchronize
+    - ready_for_review
+  push:
+    branches:
+      - '!main'
+
+jobs:
+  dbt_ci:
+    runs-on: ubuntu-latest
+    env:
+       DBT_PROFILES_DIR: ./
+       DBT_GOOGLE_PROJECT: ${{ vars.DBT_GOOGLE_PROJECT }}
+       DBT_GOOGLE_DATASET: ${{ vars.DBT_GOOGLE_DATASET }}
+       DBT_GOOGLE_KEYFILE: /Users/owhondahraymond/.dbt/sa_key_file.json
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.17'
+
+      - name: Install requirements
+        run: pip install -r requirements.txt  
+
+      - name: Check connection
+        run: dbt debug
+
+      - name: Install dbt dependencies
+        run: dbt deps
+
+      - name: dbt build
+        run: dbt build #--full-refresh --profiles-dir ./
+
+      - name: Lint models
+        run: "sqlfluff lint models"
