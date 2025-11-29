@@ -19,7 +19,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           # Replace with your specific GCP project ID and Service Account Email
-          project_id: 'int-dev-001
+          project_id: "int-dev-001"
           service_account: "dbt-service-account@int-dev-001.iam.gserviceaccount.com"
 
       # --- Optional: Install Python and dbt if you don't have a dedicated dbt action ---  
