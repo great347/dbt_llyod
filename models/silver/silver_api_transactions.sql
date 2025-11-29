@@ -7,7 +7,7 @@
 select 
     {{ dbt_utils.generate_surrogate_key(['transaction_id', 'inserted_at']) }} AS transaction_skey,
     transaction_id,
-    consumer_id,
+    consumer_id as customer_id,
     transaction_type,
     DATE(transaction_created_at) as transaction_date,
     DATE(transaction_update_date) as transaction_update_date,
