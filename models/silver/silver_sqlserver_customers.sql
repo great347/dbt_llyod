@@ -1,6 +1,6 @@
 {{- config(alias='silver_sqlserver_customer'
 , materialized ='table'
-, unique_key='customer_id')
+, unique_key='customer_skey')
 -}}
 
 
@@ -62,7 +62,7 @@ customer_silver as (
 )
 
 select
-    -- Select existing columns
+    {{ dbt_utils.generate_surrogate_key(['customer_id', 'inserted_at']) }} AS customer_skey,
     customer_id,
     hashed_first_name as customer_firstname,
     hashed_last_name as customer_lastname,

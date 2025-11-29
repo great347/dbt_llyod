@@ -10,7 +10,7 @@ dbt_llyod:
       location: US
       method: service-account
       priority: interactive
-      project: int-dev-001
+      project: "{{ env_var('DBT_GOOGLE_PROJECT') }}" 
       threads: 1
       type: bigquery
 
@@ -22,7 +22,7 @@ dbt_llyod:
       location: US
       method: service-account
       priority: interactive
-      project: int-dev-001
+      project: "{{ env_var('DBT_GOOGLE_PROJECT') }}"  
       threads: 1
       type: bigquery
      
@@ -35,7 +35,7 @@ dbt_llyod:
       location: US
       method: service-account
       priority: interactive
-      project: int-dev-001
+      project: "{{ env_var('DBT_GOOGLE_PROJECT') }}" 
       threads: 1
       type: bigquery
       
@@ -48,7 +48,7 @@ dbt_llyod:
       location: US
       method: service-account
       priority: interactive
-      project: int-dev-001
+      project: "{{ env_var('DBT_GOOGLE_PROJECT') }}" 
       threads: 1
       type: bigquery
       
