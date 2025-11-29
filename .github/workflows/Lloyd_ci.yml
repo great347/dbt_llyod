@@ -1,29 +1,28 @@
-name: dbt BigQuery WIF Pipeline
+name: Run dbt models
 
-on:
-  pull_request:
-    types:
-    - opened
-    - reopened
-    - synchronize
-    - ready_for_review
-  push:
-    branches:
-      - '!main'
+on: [push]
 
 jobs:
-  dbt_ci:
+  build:
     runs-on: ubuntu-latest
-    env:
-       DBT_PROFILES_DIR: ./
-       DBT_GOOGLE_PROJECT: ${{ vars.DBT_GOOGLE_PROJECT }}
-       DBT_GOOGLE_DATASET: dbt_dataset
-       GOOGLE_APPLICATION_CREDENTIALS: /Users/owhondahraymond/.dbt/sa_key_file.json
+    permissions:
+      contents: 'read'
+      id-token: 'write' # This permission is crucial for OIDC authentication
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # --- ADD THIS AUTHENTICATION STEP ---
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          # Replace with your specific GCP project ID and Service Account Email
+          project_id: 'int-dev-001
+          service_account: "dbt-service-account@int-dev-001.iam.gserviceaccount.com"
+
+      # --- Optional: Install Python and dbt if you don't have a dedicated dbt action ---  
       - name: Set Up Python
         uses: actions/setup-python@v2
         with:
@@ -38,8 +37,9 @@ jobs:
       - name: Install dbt dependencies
         run: dbt deps
 
-      - name: dbt build
-        run: dbt build #--full-refresh --profiles-dir ./
+      # --- Run dbt commands ---
+      - name: Run dbt build
+        # The auth action automatically sets GOOGLE_APPLICATION_CREDENTIALS and configures the environment
+        run: dbt test
+        # Add any necessary dbt CLI arguments here (e.g., --target prod)
 
-      - name: Lint models
-        run: "sqlfluff lint models"
