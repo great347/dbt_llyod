@@ -17,7 +17,7 @@ jobs:
     env:
        DBT_PROFILES_DIR: ./
        DBT_GOOGLE_PROJECT: ${{ vars.DBT_GOOGLE_PROJECT }}
-       DBT_GOOGLE_DATASET: dbt_database
+       DBT_GOOGLE_DATASET: dbt_dataset
        DBT_GOOGLE_KEYFILE: /Users/owhondahraymond/.dbt/sa_key_file.json
 
     steps:
