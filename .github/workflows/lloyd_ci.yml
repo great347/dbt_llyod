@@ -26,7 +26,7 @@ jobs:
           #credentials_json: '${{ secrets.GCP_SA_KEY }}'
       # -- set environmental variables before running dbt --- 
       - name: Set DBT_GOOGLE_PROJECT Env Var
-        run: echo "DBT_GOOGLE_PROJECT=your-gcp-project-id" >> $GITHUB_ENV
+        run: echo "DBT_GOOGLE_PROJECT=int-dev-001" >> $GITHUB_ENV
 
       # --- Optional: Install Python and dbt if you don't have a dedicated dbt action ---  
       - name: Set Up Python
