@@ -1,64 +1,63 @@
-import pandas as pd
 import random
 from faker import Faker
 from datetime import datetime, timedelta
-import itertools
+import csv
 
-# Provided list of numeric customer IDs
-customer_ids_input = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
-    39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
-]
+# Initialize Faker with a locale that supports relevant addresses (e.g., 'en_GB')
+fake = Faker('en_GB')
 
-# Define date range and transaction types
-start_date = datetime(2025, 6, 10)
-end_date = datetime(2025, 10, 20)
-transaction_types = ['mortgage', 'withdrawal', 'fee', 'deposit', 'direct_debit']
+def generate_customer_data(num_customers):
+    """Generates a list of dictionaries containing synthetic customer data."""
+    customers = []
+    customer_ids = list(range(1, num_customers + 1))
+    random.shuffle(customer_ids)
 
-# Counter for numeric transaction IDs
-transaction_id_counter = itertools.count(100000) # Start IDs from 100000
+    # Define a time range for realistic update dates (e.g., within the last 30 days)
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=30)
 
-# Generate transaction data
-transactions = []
-current_date = start_date
-while current_date <= end_date:
-    for customer_id in customer_ids_input:
-        # Generate a random number of transactions (0 to 3) for each customer on this day
-        num_transactions_for_customer = random.randint(0, 3) 
-        for _ in range(num_transactions_for_customer):
-            transaction_id = next(transaction_id_counter)
-            transaction_type = random.choice(transaction_types)
-            
-            # Adjust transaction value based on type for more realistic data
-            if transaction_type == 'mortgage':
-                transaction_amount = round(random.uniform(500.0, 5000.0), 2)
-            elif transaction_type == 'withdrawal':
-                transaction_amount = round(random.uniform(10.0, 500.0), 2)
-            elif transaction_type == 'deposit':
-                transaction_amount = round(random.uniform(20.0, 1000.0), 2)
-            elif transaction_type == 'fee':
-                transaction_amount = round(random.uniform(1.0, 50.0), 2)
-            elif transaction_type == 'direct_debit':
-                transaction_amount = round(random.uniform(50.0, 500.0), 2)
-            
-            transaction_date_str = current_date.strftime('%Y-%m-%d %H:%M:%S')
-            
-            transactions.append({
-                'transaction_id': transaction_id,
-                'consumer_id': customer_id,
-                'transaction_created_at': transaction_date_str,
-                'transaction_update_date': transaction_date_str, # Using creation date as initial update date
-                'transaction_type': transaction_type,
-                'transaction_payment_value': transaction_amount
-            })
-    current_date += timedelta(days=1)
+    for i in range(num_customers):
+        # Generate a random datetime object within the range
+        update_datetime_obj = fake.date_time_between(start_date=start_date, end_date=end_date)
+        
+        # Format the datetime object as a string: YYYY-MM-DD HH:MM:SS
+        formatted_date_string = update_datetime_obj.strftime("%Y-%m-%d %H:%M:%S")
 
-# Create a Pandas DataFrame and export to CSV
-df = pd.DataFrame(transactions)
-df.to_csv('customer_transactions_linked_numeric.csv', index=False)
+        customer = {
+            'customer_id': customer_ids[i],
+            'full_name': fake.name(),
+            'post_code': fake.postcode(),
+            'city': fake.city(),
+            'region': fake.county(),
+            'last_update_date': formatted_date_string
+        }
+        customers.append(customer)
+    return customers
 
-print("customer_transactions_linked_numeric.csv file has been generated with random transaction data.")
-print(f"Total transactions generated: {len(df)}")
-print(df.head())
+def save_to_csv_with_header(data, filename="customers_final.csv"):
+    """Saves the generated data to a CSV file WITH a header."""
+    fieldnames = ['customer_id', 'full_name', 'post_code', 'city', 'region', 'last_update_date']
+    
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        
+        # --- Writes the header row ---
+        writer.writeheader() 
+        
+        writer.writerows(data)
+    print(f"Generated {len(data)} customer records and saved to {filename}")
+
+# Generate exactly 50 customers
+num_of_customers_to_generate = 50
+customer_data = generate_customer_data(num_of_customers_to_generate)
+
+# Save the data to a new CSV file named customers_final.csv
+save_to_csv_with_header(customer_data)
+
+
+
+
+
+
+
 
